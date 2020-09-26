@@ -1,0 +1,30 @@
+syntax = "proto3";
+option java_package = "com.yueya.im.common.model";
+option java_outer_classname = "ActorMsg";
+
+enum CmdType {
+   NONE =0;
+   SEND = 1;
+   RECEIVE = 2;
+   UP =3;
+   DOWN = 4;
+   BROADCAST = 5;
+   UP_BROADCAST = 6;
+   DOWN_BROADCAST = 7;
+   ACK = 8;
+   NO_ACK = 9;
+}
+
+message ImMessage{
+    string from =1;
+    string to =2;
+    int64 msgId=3;
+    string content=4;
+    string device=5;
+}
+
+message ActorCmd {
+    CmdType cmdType=1;
+    ImMessage message=2;
+    int32 msgType=3;
+}
